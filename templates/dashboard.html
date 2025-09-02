@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+
+<form method="POST" class="row g-3">
+    <div class="col-md-4">
+        <label>Category</label>
+        <input type="text" name="category" class="form-control" required>
+    </div>
+    <div class="col-md-4">
+        <label>Amount</label>
+        <input type="number" step="0.01" name="amount" class="form-control" required>
+    </div>
+    <div class="col-md-4">
+        <label>Date</label>
+        <input type="date" name="date" class="form-control" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary mt-2">Add Expense</button>
+    </div>
+</form>
+
+<hr>
+<h3>Your Expenses</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in expenses %}
+        <tr>
+            <td>{{ e.category }}</td>
+            <td>{{ e.amount }}</td>
+            <td>{{ e.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
